@@ -19,7 +19,24 @@
   --dark-dropdown-background: hsl(var(--hue), 63%, 43%);
   --dark-mode-background: hsl(var(--hue), 20%, 12%);
 
+  --main-bird: url(../images/bird2.jpg);
+  --night-bird: url(../images/bird11.jpg);
+
+  --path-value-1: var(20%);
+  --path-value-2: var(80%);
+  --path-value-2: var(100%); 
+
   /* Custom theme variables go below */
+  --custom-main-bg: #add2eb;
+  --custom-font: #181e34;
+  --custom-secondary-bg: #0f2417;
+  --custom-accent: #a24f0b;
+  --custom-drop: #67929e;
+  --text: var(--custom-font);
+  --border-color: var(--custom-accent);
+  --bg-dropdown: var(--custom-drop);
+  --bg-custom: var(--custom-main-bg);
+  --bg-nav: linear-gradient(to right, --custom-main-bg, --custom-secondary-bg);
 }
 
 .light {
@@ -33,11 +50,26 @@
   --text: var(--secondary-black);
   --border-color: var(--accent-blue);
   --bg-custom: var(--drop-down-custom);
+  --bird: var(--main-bird);
 }
 
-/* Dark theme code goes below */
+.dark {
+  --bg: var(--dark-mode-background);
+  --bg-dropdown: var(--dark-dropdown-background);
+  --text: var(--text-color-dark-mode);
+  --border-color: var(--accent-color);
+  --bg-custom: var(--drop-down-custom);
+  --bg-nav: linear-gradient(to bottom, --link-color, --secondary-black);
+  --bird: var(--night-bird);
+}
 
-/* Custom theme code goes below */
+.custom-theme {
+    --bg: var(--custom-main-bg);
+    --bird: var(--main-bird);
+    --clip1: var(--path-value-1);
+    --clip2: var(--path-value-2);
+    --clip3: var(--path-value-3);
+}
 
 #dark::before {
   background: #2a2e35;
@@ -83,6 +115,7 @@ header {
   margin-bottom: 1em;
   padding-bottom: 2.5em;
   text-align: center;
+  clip-path: polygon(var(--clip1) 0%, var(--clip2) 0%, var(--clip3) var(--clip3), 0% var(--clip3));
 }
 
 main {
@@ -182,7 +215,13 @@ img {
 }
 
 .subhead-1 {
-  background-image: url("../images/bird2.jpg");
+  background-image: var(--bird);
+}
+
+.subhead-1:hover {
+    filter: hue-rotate(3.142rad);
+    transition: ease-in 0.5s;
+    cursor: pointer;
 }
 
 .subhead-2 {
@@ -191,6 +230,12 @@ img {
 
 .block-1 {
   background-image: url("../images/bird4.jpg");
+}
+
+.block-1:hover {
+    filter: blur(1.2px);
+    transition: ease-in 0.5s;
+    cursor: pointer;
 }
 
 .block-2 {
